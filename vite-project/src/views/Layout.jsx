@@ -9,15 +9,15 @@ import {
   CssBaseline,
   Typography,
 } from '@mui/material';
-import {useContext, useEffect} from 'react';
-import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
-import {MediaContext} from '../contexts/MediaContext';
-import {useUser} from '../hooks/ApiHooks';
-import {themeOptions} from '../themes/themeOptions';
+import { useContext, useEffect } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { MediaContext } from '../contexts/MediaContext';
+import { useUser } from '../hooks/ApiHooks';
+import { themeOptions } from '../themes/themeOptions';
 
 const Layout = () => {
-  const {user, setUser} = useContext(MediaContext);
-  const {getUserByToken} = useUser();
+  const { user, setUser } = useContext(MediaContext);
+  const { getUserByToken } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -45,9 +45,9 @@ const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="xl">
+      <Container maxWidth="small">
         <AppBar position="sticky">
-          <Toolbar disableGutters sx={{justifyContent: 'space-between'}}>
+          <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
             <Typography
               variant="h6"
               sx={{
@@ -57,27 +57,27 @@ const Layout = () => {
             >
               SportsGram
             </Typography>
-            <Box sx={{mr: 2}}>
-              <Button sx={{color: 'white'}} component={Link} to="/home">
+            <Box sx={{ mr: 2 }}>
+              <Button sx={{ color: 'white' }} component={Link} to="/home">
                 Home
               </Button>
               {user ? (
                 <>
-                  <Button sx={{color: 'white'}} component={Link} to="/profile">
+                  <Button sx={{ color: 'white' }} component={Link} to="/profile">
                     Profile
                   </Button>
-                  <Button sx={{color: 'white'}} component={Link} to="/upload">
+                  <Button sx={{ color: 'white' }} component={Link} to="/upload">
                     Upload
                   </Button>
-                  <Button sx={{color: 'white'}} component={Link} to="/myfiles">
+                  <Button sx={{ color: 'white' }} component={Link} to="/myfiles">
                     My Files
                   </Button>
-                  <Button sx={{color: 'white'}} component={Link} to="/logout">
+                  <Button sx={{ color: 'white' }} component={Link} to="/logout">
                     Logout
                   </Button>
                 </>
               ) : (
-                <Button sx={{color: 'white'}} component={Link} to="/">
+                <Button sx={{ color: 'white' }} component={Link} to="/">
                   Login
                 </Button>
               )}

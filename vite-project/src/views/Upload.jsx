@@ -1,18 +1,18 @@
-import {Box, Button, Slider} from '@mui/material';
+import { Box, Button, Slider } from '@mui/material';
 import useForm from '../hooks/FormHooks';
-import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {appId} from '../utils/variables';
-import {useMedia, useTag} from '../hooks/ApiHooks';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { appId } from '../utils/variables';
+import { useMedia, useTag } from '../hooks/ApiHooks';
 
 const Upload = () => {
   const [file, setFile] = useState(null);
   const [selectedImage, setSelectedImage] = useState(
-    'https://placekitten.com/600/400'
+    'https://t4.ftcdn.net/jpg/02/17/88/73/360_F_217887350_mDfLv2ootQNeffWXT57VQr8OX7IvZKvB.jpg'
   );
   // 'https://placehold.co/600x400?text=Choose-media'
-  const {postMedia} = useMedia();
-  const {postTag} = useTag();
+  const { postMedia } = useMedia();
+  const { postTag } = useTag();
   const navigate = useNavigate();
 
   const initValues = {
@@ -63,12 +63,12 @@ const Upload = () => {
     reader.readAsDataURL(event.target.files[0]);
   };
 
-  const {inputs, handleSubmit, handleInputChange} = useForm(
+  const { inputs, handleSubmit, handleInputChange } = useForm(
     doUpload,
     initValues
   );
 
-  const {inputs: filterInputs, handleInputChange: handleFilterChange} = useForm(
+  const { inputs: filterInputs, handleInputChange: handleFilterChange } = useForm(
     null,
     filterInitValues
   );

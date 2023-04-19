@@ -1,28 +1,22 @@
 import '@fontsource/playfair-display';
 import '@fontsource/lato';
+import "@fontsource/akshar";
+
 
 const themeOptions = {
 
   palette: {
-    type: 'dark',
+    type: 'bright',
     primary: {
-      main: '#7b1fa2',
+      main: '#000',
     },
     secondary: {
-      main: '#d32f2f',
+      main: '#fff',
     },
   },
-   palette: {
-    type: 'dark',
-    primary: {
-      main: '#7b1fa2',
-    },
-    secondary: {
-      main: '#d32f2f',
-    },
-  },
+
   typography: {
-    fontFamily: 'Lato',
+    fontFamily: 'akshar',
     h1: {
       fontFamily: 'Playfair Display, serif',
     },
@@ -35,4 +29,4 @@ const themeOptions = {
   },
 };
 
-export {themeOptions};
+export { themeOptions };
