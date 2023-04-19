@@ -19,7 +19,7 @@ module.exports = {
   },
   'plugins': [
     'react',
-    'prettier' // remove if using WebStorm
+    'prettier'
   ],
   'rules': {
     'react/jsx-uses-react': 'error',
