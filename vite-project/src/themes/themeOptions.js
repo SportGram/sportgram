@@ -1,6 +1,7 @@
 import '@fontsource/playfair-display';
 import '@fontsource/lato';
 import "@fontsource/akshar";
+import "@fontsource/lobster";
 
 
 const themeOptions = {
@@ -26,6 +27,10 @@ const themeOptions = {
     h3: {
       fontFamily: 'Playfair Display, serif',
     },
+    h6: {
+      color: '#CFB53B',
+      fontFamily: 'lobster',
+    }
   },
 };
 
