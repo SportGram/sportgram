@@ -4,7 +4,6 @@ import "@fontsource/akshar";
 
 
 const themeOptions = {
-
   palette: {
     type: 'bright',
     primary: {
@@ -14,6 +13,7 @@ const themeOptions = {
       main: '#fff',
     },
   },
+
 
   typography: {
     fontFamily: 'akshar',
