@@ -3,15 +3,6 @@ import '@fontsource/lato';
 
 const themeOptions = {
 
-  palette: {
-    type: 'dark',
-    primary: {
-      main: '#7b1fa2',
-    },
-    secondary: {
-      main: '#d32f2f',
-    },
-  },
    palette: {
     type: 'dark',
     primary: {
