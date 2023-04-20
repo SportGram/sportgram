@@ -1,8 +1,7 @@
 import '@fontsource/playfair-display';
 import '@fontsource/lato';
-import "@fontsource/akshar";
-import "@fontsource/lobster";
-
+import '@fontsource/akshar';
+import '@fontsource/lobster';
 
 const themeOptions = {
   palette: {
@@ -14,7 +13,6 @@ const themeOptions = {
       main: '#fff',
     },
   },
-
 
   typography: {
     fontFamily: 'akshar',
@@ -30,7 +28,7 @@ const themeOptions = {
     h6: {
       color: '#CFB53B',
       fontFamily: 'lobster',
-    }
+    },
   },
 };
 
