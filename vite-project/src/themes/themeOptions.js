@@ -8,9 +8,6 @@ const themeOptions = {
     type: 'bright',
     primary: {
       main: '#0E0F15',
-      background: {
-        default: 'black',
-      },
     },
     secondary: {
       main: '#fff',
@@ -21,13 +18,13 @@ const themeOptions = {
   typography: {
     fontFamily: 'akshar',
     h1: {
-      fontFamily: 'Playfair Display, serif',
+      fontFamily: 'akshar',
     },
     h2: {
       fontFamily: 'Playfair Display, serif',
     },
     h3: {
-      fontFamily: 'Playfair Display, serif',
+      fontFamily: 'akshar',
     },
     h6: {
       color: '#CFB53B',

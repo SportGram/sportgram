@@ -6,6 +6,7 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { MediaContext } from '../contexts/MediaContext';
 import { useUser } from '../hooks/ApiHooks';
 import { themeOptions } from '../themes/themeOptions';
+import { AddCircleOutlined, HomeOutlined, AccountCircleOutlined } from '@mui/icons-material';
 
 
 const Layout = () => {
@@ -48,9 +49,10 @@ const Layout = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="xl">
-      <AppBar position="sticky" sx={{ width: '20%', position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 1 }}>
+      <AppBar position="sticky" sx={{flexShrink: 0, width: '20%', position: 'fixed', top: 0, left: 0, bottom: 0}}>
+      <Toolbar disableGutters sx={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
-     <Toolbar disableGutters sx={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+
   <Typography
     variant="h6"
     fontSize={32}
@@ -65,32 +67,42 @@ const Layout = () => {
     SportsGram
   </Typography>
   <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'transparent', padding: '100px'}}>
-  <Button component={Link} to="/home" sx={{ my: 1, color:'white'  }}>
-    Home
+  <Button component={Link} to="/upload" sx={{ my: 1, color: 'white', alignItems: 'center' }}>
+    <HomeOutlined sx={{ mr: 1}} />
+    Home&nbsp;&nbsp;&nbsp;&nbsp;
   </Button>
   {user ? (
     <>
       <Button component={Link} to="/profile" sx={{ my: 1, color:'white' }}>
+        <AccountCircleOutlined sx={{ mr: 1 }} />
         Profile
       </Button>
-      <Button component={Link} to="/upload" sx={{ my: 1,color:'white'  }}>
+      <Button component={Link} to="/upload" sx={{ my: 1, color: 'white' }}>
+        <AddCircleOutlined sx={{ mr: 1 }} />
         Upload
       </Button>
-      <Button component={Link} to="/myfiles" sx={{ my: 1, color:'white'  }}>
+      <Button component={Link} to="/myfiles" sx={{ my: 1, color:'white', mr: 1 }}>
+
         My Files
       </Button>
-      <Button component={Link} to="/logout" sx={{ my: 1, color:'white'  }}>
+      <Button component={Link} to="/logout" sx={{ my: 1, color:'white', mr: 1 }}>
+
         Logout
       </Button>
-      <Button component={Link} to="/settings" sx={{ my: 1, color:'white'  }}>
+      <Button component={Link} to="/settings" sx={{ my: 1, color:'white', mr: 1 }}>
+
         Settings
       </Button>
-
     </>
   ) : (
-    <Button component={Link} to="/" sx={{ my: 1,  }}>
-      Login
-    </Button>
+    <>
+      <Button component={Link} to="/login" sx={{ my: 1, color:'white' }}>
+        Login
+      </Button>
+      <Button component={Link} to="/signup" sx={{ my: 1, color:'white' }}>
+        Signup
+      </Button>
+    </>
   )}
 </Box>
 
