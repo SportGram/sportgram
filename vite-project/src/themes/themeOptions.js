@@ -1,19 +1,25 @@
 import '@fontsource/playfair-display';
 import '@fontsource/lato';
+import '@fontsource/akshar';
+import '@fontsource/lobster';
 
 const themeOptions = {
-
-   palette: {
-    type: 'dark',
+  palette: {
+    type: 'bright',
     primary: {
-      main: '#7b1fa2',
+      main: '#0E0F15',
+      background: {
+        default: 'black',
+      },
     },
     secondary: {
-      main: '#d32f2f',
+      main: '#fff',
+      text: '#fff',
     },
   },
+
   typography: {
-    fontFamily: 'Lato',
+    fontFamily: 'akshar',
     h1: {
       fontFamily: 'Playfair Display, serif',
     },
@@ -22,6 +28,10 @@ const themeOptions = {
     },
     h3: {
       fontFamily: 'Playfair Display, serif',
+    },
+    h6: {
+      color: '#CFB53B',
+      fontFamily: 'lobster',
     },
   },
 };

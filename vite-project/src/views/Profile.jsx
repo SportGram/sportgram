@@ -39,7 +39,7 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <Card>
+    <Card sx={{ marginLeft: '260px' }}>
       {user && (
         <CardContent>
           <List>

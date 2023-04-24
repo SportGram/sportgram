@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {appId} from '../utils/variables';
 import {useMedia, useTag} from '../hooks/ApiHooks';
+import React from 'react';
 
 const Upload = () => {
   const [file, setFile] = useState(null);
@@ -76,7 +77,7 @@ const Upload = () => {
   console.log('Upload', file);
 
   return (
-    <Box>
+    <Box sx={{ marginLeft: '260px' }}>
       <img
         src={selectedImage}
         alt="preview"
