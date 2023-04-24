@@ -77,7 +77,7 @@ const Upload = () => {
   console.log('Upload', file);
 
   return (
-    <Box sx={{ marginLeft: '260px' }}>
+    <Box>
       <img
         src={selectedImage}
         alt="preview"

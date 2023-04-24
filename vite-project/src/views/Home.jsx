@@ -4,7 +4,7 @@ import MediaTable from '../components/MediaTable';
 
 const Home = () => {
   return (
-    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}}>
     <Typography component="h1" variant="h3">
       Home
     </Typography>

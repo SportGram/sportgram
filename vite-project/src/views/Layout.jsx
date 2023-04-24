@@ -49,7 +49,7 @@ const Layout = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="xl">
-      <AppBar position="sticky" sx={{flexShrink: 0, width: '20%', position: 'fixed', top: 0, left: 0, bottom: 0}}>
+      <AppBar position="sticky" sx={{flexShrink: 0, width: '20%', position: 'fixed', top: 0, left: 0, bottom: 0,}}>
       <Toolbar disableGutters sx={{ flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
 
 
@@ -66,10 +66,10 @@ const Layout = () => {
   >
     SportsGram
   </Typography>
-  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'transparent', padding: '100px'}}>
-  <Button component={Link} to="/upload" sx={{ my: 1, color: 'white', alignItems: 'center' }}>
+  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'transparent',}}>
+  <Button component={Link} to="/home" sx={{ my: 1, color: 'white', alignItems: 'center' }}>
     <HomeOutlined sx={{ mr: 1}} />
-    Home&nbsp;&nbsp;&nbsp;&nbsp;
+    Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </Button>
   {user ? (
     <>
@@ -109,7 +109,7 @@ const Layout = () => {
 </Toolbar>
 
         </AppBar>
-        <main>
+        <main style={{ marginTop: '80px', marginLeft: '20%' }}>
           <Outlet />
         </main>
       </Container>
