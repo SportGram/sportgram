@@ -93,17 +93,13 @@ const Upload = () => {
         }}
       />
       <form onSubmit={handleSubmit}>
-        <input
+        <textarea
           onChange={handleInputChange}
           type="text"
           name="title"
           value={inputs.title}
-        ></input>
-        <textarea
-          onChange={handleInputChange}
-          name="description"
-          value={inputs.description}
         ></textarea>
+
         <input
           onChange={handleFileChange}
           type="file"
