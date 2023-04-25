@@ -10,7 +10,9 @@ import Logout from './views/Logout';
 import Upload from './views/Upload';
 import MyFiles from './views/MyFiles';
 import Update from './views/Update';
+import Settings from './views/Settings';
 import ErrorPage from './views/ErrorPage';
+
 
 console.log('base', import.meta.env.BASE_URL);
 
@@ -27,6 +29,7 @@ const App = () => {
             <Route path="/upload" element={<Upload />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/myfiles" element={<MyFiles />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="/update" element={<Update />} />
             <Route path="*" element={<ErrorPage />} />
           </Route>

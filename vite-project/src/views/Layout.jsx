@@ -72,6 +72,9 @@ const Layout = () => {
                   <Button sx={{ color: 'white' }} component={Link} to="/myfiles">
                     My Files
                   </Button>
+                  <Button sx={{ color: 'white' }} component={Link} to="/settings">
+                    Settings
+                  </Button>
                   <Button sx={{ color: 'white' }} component={Link} to="/logout">
                     Logout
                   </Button>
