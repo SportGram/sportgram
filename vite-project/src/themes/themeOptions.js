@@ -15,8 +15,6 @@ const themeOptions = {
     },
   },
 
-
-
   typography: {
     fontFamily: 'akshar',
     h1: {

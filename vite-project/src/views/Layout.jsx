@@ -65,6 +65,7 @@ const Layout = () => {
       <Container maxWidth="xl">
       <AppBar position="sticky" style={{ top: '0' }}>
       <Toolbar sx={{ justifyContent: 'center' }}>
+
   <Typography
     variant="h6"
     fontSize={32}
@@ -136,7 +137,7 @@ const Layout = () => {
 
 
         </AppBar>
-        <main style={{}}>
+        <main>
            <Outlet />
           </main>
       </Container>

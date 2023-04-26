@@ -38,7 +38,7 @@ const MediaRow = ({ file, deleteMedia }) => {
   };
 
   return (
-<ImageListItem sx={{ marginLeft: '204px'}}>
+<ImageListItem>
       <img
         src={
           file.media_type !== 'audio'
