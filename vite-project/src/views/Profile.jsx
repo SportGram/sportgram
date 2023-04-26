@@ -39,7 +39,7 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <Card sx = {{padding: '140px'}}>
+    <Card sx = {{}}>
       {user && (
         <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
           <List>

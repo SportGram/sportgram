@@ -1,27 +1,20 @@
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-} from '@mui/material';
-import {useLocation} from 'react-router-dom';
-import {mediaUrl} from '../utils/variables';
-import {useFavourite, useUser} from '../hooks/ApiHooks';
-import {useContext, useEffect, useState} from 'react';
-import {MediaContext} from '../contexts/MediaContext';
+import { Button, ButtonGroup, Card, CardContent, CardMedia, Typography, } from '@mui/material';
+import { useLocation } from 'react-router-dom';
+import { mediaUrl } from '../utils/variables';
+import { useFavourite, useUser } from '../hooks/ApiHooks';
+import { useContext, useEffect, useState } from 'react';
+import { MediaContext } from '../contexts/MediaContext';
 
 const Single = () => {
-  const [owner, setOwner] = useState({username: ''});
+  const [owner, setOwner] = useState({ username: '' });
   const [likes, setLikes] = useState(0);
   const [userLike, setUserLike] = useState(false);
-  const {user} = useContext(MediaContext);
+  const { user } = useContext(MediaContext);
 
-  const {getUser} = useUser();
-  const {getFavourites, postFavourite, deleteFavourite} = useFavourite();
+  const { getUser } = useUser();
+  const { getFavourites, postFavourite, deleteFavourite } = useFavourite();
 
-  const {state} = useLocation();
+  const { state } = useLocation();
   const file = state.file;
   let allData = {
     desc: file.description,
@@ -73,7 +66,7 @@ const Single = () => {
   const doLike = async () => {
     try {
       const token = localStorage.getItem('userToken');
-      const data = {file_id: file.file_id};
+      const data = { file_id: file.file_id };
       const likeInfo = await postFavourite(data, token);
       console.log(likeInfo);
       setUserLike(true);

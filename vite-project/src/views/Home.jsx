@@ -1,5 +1,7 @@
+
 import { Typography } from '@mui/material';
 import React from 'react';
+
 import MediaTable from '../components/MediaTable';
 
 const Home = () => {

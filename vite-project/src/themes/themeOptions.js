@@ -30,7 +30,11 @@ const themeOptions = {
       color: '#CFB53B',
       fontFamily: 'lobster',
     },
+    h6: {
+      color: '#CFB53B',
+      fontFamily: 'lobster',
+    },
   },
 };
 
-export {themeOptions};
+export { themeOptions };
