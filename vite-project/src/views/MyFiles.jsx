@@ -6,7 +6,6 @@ const MyFiles = () => {
   return (
     <>
       <Typography component="h1" variant="h3">
-        My Files
       </Typography>
       <MediaTable myFilesOnly={true} />
     </>
