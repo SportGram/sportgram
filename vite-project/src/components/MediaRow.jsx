@@ -24,7 +24,7 @@ const MediaRow = ({file, deleteMedia}) => {
   };
 
   return (
-<ImageListItem sx={{width: 500, height: 300}}>
+<ImageListItem sx={{ marginLeft: '204px'}}>
       <img
         src={
           file.media_type !== 'audio'
@@ -43,6 +43,7 @@ const MediaRow = ({file, deleteMedia}) => {
               variant="contained"
               to="/single"
               state={{file}}
+
             >
               View
             </Button>

@@ -39,12 +39,12 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <Card>
+    <Card sx={{}}>
       {user && (
         <CardContent>
           <List>
             <ListItem>
-              <ListItemAvatar sx={{width: '100%'}}>
+              <ListItemAvatar>
                 <Avatar
                   variant="square"
                   src={avatar.filename}
@@ -85,5 +85,7 @@ const Profile = () => {
     </Card>
   );
 };
+
+
 
 export default Profile;

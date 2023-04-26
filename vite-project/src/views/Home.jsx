@@ -8,7 +8,7 @@ const Home = () => {
     <Typography component="h1" variant="h3">
       Home
     </Typography>
-    <MediaTable />
+    <MediaTable style={{display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%'}} />
   </div>
   );
 };
