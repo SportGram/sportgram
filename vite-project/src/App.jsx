@@ -10,7 +10,10 @@ import Logout from './views/Logout';
 import Upload from './views/Upload';
 import MyFiles from './views/MyFiles';
 import Update from './views/Update';
+
+import React from 'react';
 import Settings from './views/Settings';
+
 import ErrorPage from './views/ErrorPage';
 
 
@@ -31,6 +34,12 @@ const App = () => {
             <Route path="/myfiles" element={<MyFiles />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/update" element={<Update />} />
+
+
+
+
+
+
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>

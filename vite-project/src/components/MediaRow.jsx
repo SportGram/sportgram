@@ -38,7 +38,7 @@ const MediaRow = ({ file, deleteMedia }) => {
   };
 
   return (
-    <ImageListItem>
+<ImageListItem sx={{ marginLeft: '204px'}}>
       <img
         src={
           file.media_type !== 'audio'
@@ -56,7 +56,11 @@ const MediaRow = ({ file, deleteMedia }) => {
               component={Link}
               variant="contained"
               to="/single"
-              state={{ file }}
+
+              state={{file}}
+
+
+
             >
               View
             </Button>
