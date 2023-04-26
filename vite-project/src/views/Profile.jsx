@@ -16,10 +16,9 @@ import { MediaContext } from '../contexts/MediaContext';
 import { useTag } from '../hooks/ApiHooks';
 import { mediaUrl } from '../utils/variables';
 import MyFiles from './MyFiles'; // import the MyFiles component
-
 import HouseSidingIcon from '@mui/icons-material/HouseSiding';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import PersonPinIcon from '@mui/icons-material/PersonPin';
+
 const Profile = () => {
   const { user } = useContext(MediaContext);
   const [avatar, setAvatar] = useState({
