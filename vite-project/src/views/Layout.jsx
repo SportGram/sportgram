@@ -1,11 +1,15 @@
+
 import { AppBar, Box, Button, Container, createTheme, CssBaseline, IconButton, Menu, MenuItem, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import React from 'react';
+
+
 import { useContext, useEffect } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { MediaContext } from '../contexts/MediaContext';
 import { useUser } from '../hooks/ApiHooks';
 import { themeOptions } from '../themes/themeOptions';
+
 import { AddCircleOutlined, HomeOutlined, AccountCircleOutlined } from '@mui/icons-material';
 
 
@@ -15,6 +19,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+
 
 
 const Layout = () => {
@@ -62,6 +67,7 @@ const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <Container maxWidth="xl">
       <AppBar position="sticky" style={{ top: '0' }}>
       <Toolbar sx={{ justifyContent: 'center' }}>
@@ -78,6 +84,7 @@ const Layout = () => {
     SportsGram
   </Typography>
   <Box
+
               sx={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -92,6 +99,29 @@ const Layout = () => {
                     onClick={handleMenuClick}
                   >
                     {user.username}
+
+              SportsGram
+            </Typography>
+            <Box sx={{ mr: 2 }}>
+              <Button sx={{ color: 'white' }} component={Link} to="/home">
+                Home
+              </Button>
+              {user ? (
+                <>
+                  <Button sx={{ color: 'white' }} component={Link} to="/profile">
+                    Profile
+                  </Button>
+                  <Button sx={{ color: 'white' }} component={Link} to="/upload">
+                    Upload
+                  </Button>
+                  <Button sx={{ color: 'white' }} component={Link} to="/myfiles">
+                    My Files
+                  </Button>
+                  <Button sx={{ color: 'white' }} component={Link} to="/settings">
+                    Settings
+                  </Button>
+                  <Button sx={{ color: 'white' }} component={Link} to="/logout">
+                    Logout
                   </Button>
                   <Menu
                     anchorEl={anchorEl}
@@ -120,6 +150,7 @@ const Layout = () => {
                   </Menu>
                 </>
               ) : (
+
                 <>
       <Button component={Link} to="/login" sx={{ my: 1, color:'white' }}>
         Login
@@ -134,6 +165,14 @@ const Layout = () => {
 
 </Toolbar>
 
+
+
+                <Button sx={{ color: 'white' }} component={Link} to="/">
+                  Login
+                </Button>
+              )}
+            </Box>
+          </Toolbar>
 
         </AppBar>
         <main style={{}}>
