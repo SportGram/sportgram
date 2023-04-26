@@ -1,4 +1,4 @@
-import {AccountCircle, Badge, ContactMail} from '@mui/icons-material';
+import { AccountCircle, Badge, ContactMail } from '@mui/icons-material';
 import {
   Avatar,
   Card,
@@ -8,18 +8,24 @@ import {
   ListItemAvatar,
   ListItemIcon,
   ListItemText,
+  Tab,
+  Tabs,
 } from '@mui/material';
-import {useContext, useEffect, useState} from 'react';
-import {MediaContext} from '../contexts/MediaContext';
-import {useTag} from '../hooks/ApiHooks';
-import {mediaUrl} from '../utils/variables';
+import { useContext, useEffect, useState } from 'react';
+import { MediaContext } from '../contexts/MediaContext';
+import { useTag } from '../hooks/ApiHooks';
+import { mediaUrl } from '../utils/variables';
+import MyFiles from './MyFiles'; // import the MyFiles component
 
+import HouseSidingIcon from '@mui/icons-material/HouseSiding';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PersonPinIcon from '@mui/icons-material/PersonPin';
 const Profile = () => {
-  const {user} = useContext(MediaContext);
+  const { user } = useContext(MediaContext);
   const [avatar, setAvatar] = useState({
     filename: 'https://placekitten.com/320',
   });
-  const {getTag} = useTag();
+  const { getTag } = useTag();
 
   const fetchAvatar = async () => {
     try {
@@ -38,20 +44,31 @@ const Profile = () => {
     fetchAvatar();
   }, [user]);
 
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const [currentTab, setCurrentTab] = useState('own');
+const handleTabChange = (event, newValue) => {
+  setCurrentTab(newValue);
+};
+
   return (
     <Card>
       {user && (
         <CardContent>
           <List>
             <ListItem>
-              <ListItemAvatar sx={{width: '100%'}}>
+              <ListItemAvatar sx={{ width: '100%' }}>
                 <Avatar
                   variant="square"
                   src={avatar.filename}
                   imgProps={{
                     alt: `${user.username}'s profile image`,
                   }}
-                  sx={{width: '100%', height: '30vh'}}
+                  sx={{ width: '100%', height: '30vh' }}
                 />
               </ListItemAvatar>
             </ListItem>
@@ -80,9 +97,18 @@ const Profile = () => {
               <ListItemText primary={user.user_id} />
             </ListItem>
           </List>
+
+
         </CardContent>
       )}
+      <Tabs value={currentTab} onChange={handleTabChange}>
+  <Tab icon={<HouseSidingIcon />} label="Own Posts" value="own" />
+  <Tab icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
+</Tabs>
+{currentTab === 'own' && <MyFiles myFilesOnly={true} />}
+
     </Card>
+
   );
 };
 
