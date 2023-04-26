@@ -49,7 +49,7 @@ const MediaRow = ({ file, deleteMedia }) => {
       />
       <ImageListItemBar
         title={file.title}
-        subtitle={fileUser.username || file.user_id}
+        subtitle={"@" + fileUser.username || file.user_id}
         actionIcon={
           <ButtonGroup>
             <Button
