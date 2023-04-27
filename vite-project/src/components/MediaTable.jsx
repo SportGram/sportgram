@@ -1,3 +1,4 @@
+import '../search.css';
 import { useState } from 'react';
 import { ImageList, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
@@ -18,9 +19,11 @@ const MediaTable = ({ myFilesOnly = false }) => {
     setSearchText(e.target.value);
   };
 
+
+
   return (
     <>
-      <TextField sx={{ width: '60ch' }} variant="standard" label="Search posts..." onChange={handleSearch} />
+      <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
       <ImageList cols={1} gap={8} sx={{ maxWidth: 500 }}>
         {filteredMediaArray.map((item, index) => {
           return <MediaRow key={index} file={item} deleteMedia={deleteMedia} />;
