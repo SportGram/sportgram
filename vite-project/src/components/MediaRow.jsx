@@ -1,19 +1,21 @@
+
 import { Box, Button, ButtonGroup, Hidden, ImageListItem, ImageListItemBar } from '@mui/material';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { mediaUrl } from '../utils/variables';
-import { useContext, useState, useEffect } from 'react';
-import { MediaContext } from '../contexts/MediaContext';
+import {Link} from 'react-router-dom';
+import {mediaUrl} from '../utils/variables';
+import {useContext, useState, useEffect} from 'react';
+import {MediaContext} from '../contexts/MediaContext';
 
-const MediaRow = ({ file, deleteMedia }) => {
-  const { user, update, setUpdate } = useContext(MediaContext);
+const MediaRow = ({file, deleteMedia}) => {
+  const {user, update, setUpdate} = useContext(MediaContext);
   const [fileUser, setFileUser] = useState({});
 
   useEffect(() => {
     const fetchUser = async () => {
       if (file.user_id) {
         const token = localStorage.getItem('userToken');
-        const response = await fetch(`https://media.mw.metropolia.fi/wbma/users/${file.user_id}`,
+        const response = await fetch(
+          `https://media.mw.metropolia.fi/wbma/users/${file.user_id}`,
           {
             method: 'GET',
             headers: {
@@ -49,8 +51,10 @@ const MediaRow = ({ file, deleteMedia }) => {
       />
       <ImageListItemBar
 
+
         title={file.title.slice(0, 42) + (file.title.length > 42 ? '...' : '')}
         subtitle={"@" + fileUser.username || file.user_id}
+
 
         actionIcon={
           <ButtonGroup>
@@ -58,7 +62,7 @@ const MediaRow = ({ file, deleteMedia }) => {
               component={Link}
               variant="contained"
               to="/single"
-              state={{ file }}
+              state={{file}}
             >
               View
             </Button>
@@ -68,15 +72,11 @@ const MediaRow = ({ file, deleteMedia }) => {
                   component={Link}
                   variant="contained"
                   to="/update"
-                  state={{ file }}
+                  state={{file}}
                 >
                   Update
                 </Button>
-                <Button
-                  component={Link}
-                  variant="contained"
-                  onClick={doDelete}
-                >
+                <Button component={Link} variant="contained" onClick={doDelete}>
                   Delete
                 </Button>
               </>
