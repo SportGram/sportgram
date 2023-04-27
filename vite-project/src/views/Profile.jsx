@@ -18,6 +18,7 @@ import { mediaUrl } from '../utils/variables';
 import MyFiles from './MyFiles'; // import the MyFiles component
 import HouseSidingIcon from '@mui/icons-material/HouseSiding';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useFavourite } from '../hooks/ApiHooks';
 
 const Profile = () => {
   const { user } = useContext(MediaContext);
@@ -50,9 +51,43 @@ const Profile = () => {
   };
 
   const [currentTab, setCurrentTab] = useState('own');
+  const [likedPosts, setLikedPosts] = useState([]);
+
 const handleTabChange = (event, newValue) => {
   setCurrentTab(newValue);
 };
+
+ const fetchLikedPosts = async () => {
+  setLikedPosts([])
+  const token = localStorage.getItem('userToken');
+  console.log(user)
+   const response = await fetch(`https://media.mw.metropolia.fi/wbma/favourites`,
+           {
+             method: 'GET',
+             headers: {
+               'x-access-token': token,
+             },
+           }
+         );
+   const likedPostsIds = await response.json();
+   console.log(likedPostsIds);
+
+    likedPostsIds.map(f => {
+    fetch(`https://media.mw.metropolia.fi/wbma/media/${f.file_id}`).then(res => res.json()).then(data => {
+      console.log(data);
+      setLikedPosts((prev) => [...prev, data]);
+    });
+
+    })
+
+
+ };
+
+ useEffect(() => {
+
+   fetchLikedPosts();
+ }, []);
+
 
   return (
     <Card>
@@ -105,7 +140,23 @@ const handleTabChange = (event, newValue) => {
   <Tab icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
 </Tabs>
 {currentTab === 'own' && <MyFiles myFilesOnly={true} />}
-
+{currentTab === 'liked' && (
+        <div>
+          {likedPosts.map(post => (
+            <div key={post.file_id}>
+             <img
+        src={
+          post.media_type !== 'audio'
+            ? mediaUrl + post.thumbnails.w640
+            : './vite.svg'
+        }
+        alt={post.title}
+      />
+              <p>{post.title}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </Card>
 
   );
