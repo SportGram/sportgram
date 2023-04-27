@@ -14,11 +14,11 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import React from 'react';
-import {useContext, useEffect} from 'react';
-import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
-import {MediaContext} from '../contexts/MediaContext';
-import {useUser} from '../hooks/ApiHooks';
-import {themeOptions} from '../themes/themeOptions';
+import { useContext, useEffect } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { MediaContext } from '../contexts/MediaContext';
+import { useUser } from '../hooks/ApiHooks';
+import { themeOptions } from '../themes/themeOptions';
 import {
   AddCircleOutlined,
   HomeOutlined,
@@ -29,8 +29,8 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 const Layout = () => {
-  const {user, setUser} = useContext(MediaContext);
-  const {getUserByToken} = useUser();
+  const { user, setUser } = useContext(MediaContext);
+  const { getUserByToken } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -74,8 +74,8 @@ const Layout = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="xl">
-        <AppBar position="sticky" style={{top: '0'}}>
-          <Toolbar sx={{justifyContent: 'center'}}>
+        <AppBar position="sticky" style={{ top: '0' }}>
+          <Toolbar sx={{ justifyContent: 'center' }}>
             <Typography
               variant="h6"
               fontSize={32}
@@ -99,7 +99,7 @@ const Layout = () => {
               {user ? (
                 <>
                   <Button
-                    sx={{my: 1, color: 'white', mr: 1}}
+                    sx={{ my: 1, color: 'white', mr: 1 }}
                     onClick={handleMenuClick}
                   >
                     {user.username}
@@ -137,14 +137,14 @@ const Layout = () => {
                   <Button
                     component={Link}
                     to="/login"
-                    sx={{my: 1, color: 'white'}}
+                    sx={{ my: 1, color: 'white' }}
                   >
                     Login
                   </Button>
                   <Button
                     component={Link}
                     to="/signup"
-                    sx={{my: 1, color: 'white'}}
+                    sx={{ my: 1, color: 'white' }}
                   >
                     Signup
                   </Button>
@@ -172,20 +172,20 @@ const Layout = () => {
         <BottomNavigationAction
           component={Link}
           to="/profile"
-          label={<Typography sx={{color: 'white'}}>Profile</Typography>}
-          icon={<AccountCircleOutlined sx={{my: 1, color: 'white'}} />}
+          label={<Typography sx={{ color: 'white' }}>Profile</Typography>}
+          icon={<AccountCircleOutlined sx={{ my: 1, color: 'white' }} />}
         />
         <BottomNavigationAction
           component={Link}
           to="/upload"
-          label={<Typography sx={{color: 'white'}}>Upload</Typography>}
-          icon={<AddCircleOutlined sx={{my: 1, color: 'white'}} />}
+          label={<Typography sx={{ color: 'white' }}>Upload</Typography>}
+          icon={<AddCircleOutlined sx={{ my: 1, color: 'white' }} />}
         />
         <BottomNavigationAction
           component={Link}
           to="/home"
-          label={<Typography sx={{color: 'white'}}>Home</Typography>}
-          icon={<HomeOutlined sx={{my: 1, color: 'white'}} />}
+          label={<Typography sx={{ color: 'white' }}>Home</Typography>}
+          icon={<HomeOutlined sx={{ my: 1, color: 'white' }} />}
         />
       </BottomNavigation>
     </ThemeProvider>
