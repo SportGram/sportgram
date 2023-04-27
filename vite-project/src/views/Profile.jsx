@@ -39,14 +39,14 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <Card>
+    <Card sx = {{}}>
       {user && (
-        <CardContent>
+        <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
           <List>
             <ListItem>
-              <ListItemAvatar sx={{width: '100%'}}>
+              <ListItemAvatar>
                 <Avatar
-                  variant="square"
+                  variant="rounded"
                   src={avatar.filename}
                   imgProps={{
                     alt: `${user.username}'s profile image`,

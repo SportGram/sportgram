@@ -1,9 +1,11 @@
 import { Box, Button, Slider } from '@mui/material';
 import useForm from '../hooks/FormHooks';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { appId } from '../utils/variables';
-import { useMedia, useTag } from '../hooks/ApiHooks';
+
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {appId} from '../utils/variables';
+import {useMedia, useTag} from '../hooks/ApiHooks';
+import React from 'react';
 
 const Upload = () => {
   const [file, setFile] = useState(null);
@@ -93,17 +95,13 @@ const Upload = () => {
         }}
       />
       <form onSubmit={handleSubmit}>
-        <input
+        <textarea
           onChange={handleInputChange}
           type="text"
           name="title"
           value={inputs.title}
-        ></input>
-        <textarea
-          onChange={handleInputChange}
-          name="description"
-          value={inputs.description}
         ></textarea>
+
         <input
           onChange={handleFileChange}
           type="file"

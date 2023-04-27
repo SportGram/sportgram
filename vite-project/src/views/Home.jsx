@@ -1,14 +1,22 @@
-import { Typography } from '@mui/material';
+import {Typography} from '@mui/material';
+import React from 'react';
+
 import MediaTable from '../components/MediaTable';
 
 const Home = () => {
   return (
-    <>
-      <Typography component="h1" variant="h3">
-        Home
-      </Typography>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+      }}
+    >
+      <Typography component="h1" variant="h3"></Typography>
       <MediaTable />
-    </>
+    </div>
   );
 };
 

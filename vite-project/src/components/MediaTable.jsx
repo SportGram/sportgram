@@ -19,14 +19,14 @@ const MediaTable = ({ myFilesOnly = false }) => {
   };
 
   return (
-    <>
-      <TextField onChange={handleSearch} />
-      <ImageList cols={windowSize.width > 768 ? 3 : 2} gap={8}>
-        {filteredMediaArray.map((item, index) => {
+<>
+<TextField onChange={handleSearch} />
+    <ImageList cols={1} gap={8} sx={{maxWidth: 500}}>
+      {filteredMediaArray.map((item, index) => {
           return <MediaRow key={index} file={item} deleteMedia={deleteMedia} />;
         })}
-      </ImageList>
-    </>
+    </ImageList>
+      </>
   );
 };
 
