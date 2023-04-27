@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   Container,
@@ -73,9 +74,11 @@ const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="xl">
-        <AppBar position="sticky" style={{ top: '0' }}>
-          <Toolbar sx={{ justifyContent: 'center' }}>
+
+      <Container maxWidth="xl" style={{paddingBottom: '65px'}}>
+        <AppBar position="sticky" style={{top: '0'}}>
+          <Toolbar sx={{justifyContent: 'center'}}>
+
             <Typography
               variant="h6"
               fontSize={32}
@@ -98,12 +101,11 @@ const Layout = () => {
             >
               {user ? (
                 <>
-                  <Button
-                    sx={{ my: 1, color: 'white', mr: 1 }}
-                    onClick={handleMenuClick}
-                  >
-                    {user.username}
-                  </Button>
+
+                  <IconButton onClick={handleMenuClick}>
+                    <Avatar src={user.fullname} alt={user.username} />
+                  </IconButton>
+
                   <Menu
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
@@ -160,11 +162,10 @@ const Layout = () => {
       <BottomNavigation
         sx={{
           width: '100%',
-          height: '100%',
-          position: 'sticky',
+          height: '10%',
+          position: 'fixed',
           bottom: 0,
           backgroundColor: '#0E0F15',
-          marginTop: '200px',
         }}
         value={value}
         onChange={handleChange}
