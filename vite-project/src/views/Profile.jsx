@@ -3,6 +3,8 @@ import {
   Avatar,
   Card,
   CardContent,
+  ImageList,
+  ImageListItemBar,
   List,
   ListItem,
   ListItemAvatar,
@@ -19,8 +21,10 @@ import MyFiles from './MyFiles'; // import the MyFiles component
 import HouseSidingIcon from '@mui/icons-material/HouseSiding';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useFavourite } from '../hooks/ApiHooks';
+import { useWindowSize } from '../hooks/WindowHooks';
 
 const Profile = () => {
+  const windowSize = useWindowSize;
   const { user } = useContext(MediaContext);
   const [avatar, setAvatar] = useState({
     filename: 'https://placekitten.com/320',
@@ -58,6 +62,7 @@ const handleTabChange = (event, newValue) => {
 };
 
  const fetchLikedPosts = async () => {
+
   setLikedPosts([])
   const token = localStorage.getItem('userToken');
   console.log(user)
@@ -141,7 +146,7 @@ const handleTabChange = (event, newValue) => {
 </Tabs>
 {currentTab === 'own' && <MyFiles myFilesOnly={true} />}
 {currentTab === 'liked' && (
-        <div>
+        <ImageList cols={windowSize.width > 300 ? 1 : 2} gap={8}>
           {likedPosts.map(post => (
             <div key={post.file_id}>
              <img
@@ -154,8 +159,10 @@ const handleTabChange = (event, newValue) => {
       />
               <p>{post.title}</p>
             </div>
+
           ))}
-        </div>
+        </ImageList>
+
       )}
     </Card>
 
