@@ -7,23 +7,28 @@ const themeOptions = {
   palette: {
     type: 'bright',
     primary: {
-      main: '#000',
+      main: '#0E0F15',
     },
     secondary: {
       main: '#fff',
+      text: '#fff',
     },
   },
 
   typography: {
     fontFamily: 'akshar',
     h1: {
-      fontFamily: 'Playfair Display, serif',
+      fontFamily: 'akshar',
     },
     h2: {
       fontFamily: 'Playfair Display, serif',
     },
     h3: {
-      fontFamily: 'Playfair Display, serif',
+      fontFamily: 'akshar',
+    },
+    h6: {
+      color: '#CFB53B',
+      fontFamily: 'lobster',
     },
     h6: {
       color: '#CFB53B',

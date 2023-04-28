@@ -7,12 +7,32 @@ import {
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
-import {useContext} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import {MediaContext} from '../contexts/MediaContext';
 
 const MediaRow = ({file, deleteMedia}) => {
   const {user, update, setUpdate} = useContext(MediaContext);
+  const [fileUser, setFileUser] = useState({});
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (file.user_id) {
+        const token = localStorage.getItem('userToken');
+        const response = await fetch(
+          `https://media.mw.metropolia.fi/wbma/users/${file.user_id}`,
+          {
+            method: 'GET',
+            headers: {
+              'x-access-token': token,
+            },
+          }
+        );
+        const data = await response.json();
+        setFileUser(data);
+      }
+    };
+    fetchUser();
+  }, [file.user_id]);
   const doDelete = async () => {
     const sure = confirm('Are you sure?');
     if (sure) {
@@ -35,7 +55,7 @@ const MediaRow = ({file, deleteMedia}) => {
       />
       <ImageListItemBar
         title={file.title}
-        subtitle={file.description}
+        subtitle={'@' + fileUser.username || file.user_id}
         actionIcon={
           <ButtonGroup>
             <Button

@@ -9,7 +9,7 @@ const MediaTable = ({myFilesOnly = false}) => {
   const windowSize = useWindowSize();
 
   return (
-    <ImageList cols={windowSize.width > 768 ? 3 : 2} gap={8}>
+    <ImageList cols={1} gap={8} sx={{maxWidth: 500}}>
       {mediaArray.map((item, index) => {
         return <MediaRow key={index} file={item} deleteMedia={deleteMedia} />;
       })}

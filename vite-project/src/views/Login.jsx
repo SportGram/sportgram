@@ -1,4 +1,5 @@
 import {Button, Grid, Typography} from '@mui/material';
+import React from 'react';
 import {useState} from 'react';
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
