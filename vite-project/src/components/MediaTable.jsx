@@ -1,5 +1,4 @@
-import '../search.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ImageList, TextField, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useMedia } from '../hooks/ApiHooks';
@@ -11,6 +10,7 @@ const MediaTable = ({ myFilesOnly = false }) => {
   const { mediaArray, deleteMedia } = useMedia(myFilesOnly);
   const windowSize = useWindowSize();
   const [searchText, setSearchText] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const filteredMediaArray = mediaArray.filter((item) =>
     item.title.toLowerCase().includes(searchText.toLowerCase())
@@ -20,13 +20,21 @@ const MediaTable = ({ myFilesOnly = false }) => {
     setSearchText(e.target.value);
   };
 
+  useEffect(() => {
+    if (mediaArray.length > 0) {
+      setLoading(false);
+    }
+  }, [mediaArray]);
+
   return (
     <>
       <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
-      {filteredMediaArray.length === 0 ? (
+      {loading ? (
+        <Typography variant="h6">Loading...</Typography>
+      ) : filteredMediaArray.length === 0 ? (
         <>
           <Typography variant="h6">No search results found. Go upload something</Typography>
-          <img src={gif}></img>
+          <img src={gif} alt="No search results found" />
         </>
       ) : (
         <ImageList cols={1} gap={8} sx={{ maxWidth: 500 }}>
