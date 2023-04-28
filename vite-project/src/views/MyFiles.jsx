@@ -1,5 +1,5 @@
 import React from 'react';
-import {Typography} from '@mui/material';
+import {Tabs, Typography} from '@mui/material';
 import MediaTable from '../components/MediaTable';
 
 const MyFiles = () => {
@@ -8,8 +8,13 @@ const MyFiles = () => {
       <Typography component="h1" variant="h3">
       </Typography>
       <MediaTable myFilesOnly={true} />
+
     </>
+
+
   );
 };
+
+
 
 export default MyFiles;

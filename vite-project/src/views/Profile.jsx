@@ -95,14 +95,16 @@ const handleTabChange = (event, newValue) => {
 
 
   return (
-    <Card>
+    <Card sx = {{}}>
       {user && (
-        <CardContent>
+        <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
           <List>
             <ListItem>
+
               <ListItemAvatar sx={{ width: '100%' }}>
+
                 <Avatar
-                  variant="square"
+                  variant="rounded"
                   src={avatar.filename}
                   imgProps={{
                     alt: `${user.username}'s profile image`,
