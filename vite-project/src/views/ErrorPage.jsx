@@ -1,4 +1,4 @@
-import React from 'react'
+
 import gif from '../assets/error.gif'
 import '../error.css'
 import { Button } from '@mui/material'
