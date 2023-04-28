@@ -1,6 +1,5 @@
 import {Box, Button, Slider} from '@mui/material';
 import useForm from '../hooks/FormHooks';
-
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {appId} from '../utils/variables';

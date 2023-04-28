@@ -1,22 +1,17 @@
 import React, {useState} from 'react';
 import {Button, Stack, Typography, colors} from '@mui/material';
 import Logout from './Logout';
-
-
-
 const Settings = () => {
   const [isLoggedOut, setIsLoggedOut] = useState(false);
   const [isInfoClicked, setIsInfoClicked] = useState(false);
-
-
+  
   const handleInfoClick = () => {
     setIsInfoClicked(!isInfoClicked);
   };
   const handleLogout = () => {
     setIsLoggedOut(true);
   };
-
-
+  
   return (
     <>
       {isLoggedOut ? (
