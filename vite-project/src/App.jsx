@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './views/Layout';
 import Single from './views/Single';
 import Profile from './views/Profile';
+import EditProfile from './views/EditProfile';
 import Login from './views/Login';
 import { MediaProvider } from './contexts/MediaContext';
 import Logout from './views/Logout';
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="/single" element={<Single />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/edit" element={<EditProfile />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/myfiles" element={<MyFiles />} />
