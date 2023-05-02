@@ -57,47 +57,47 @@ const Profile = () => {
   const [currentTab, setCurrentTab] = useState('own');
   const [likedPosts, setLikedPosts] = useState([]);
 
-const handleTabChange = (event, newValue) => {
-  setCurrentTab(newValue);
-};
+  const handleTabChange = (event, newValue) => {
+    setCurrentTab(newValue);
+  };
 
- const fetchLikedPosts = async () => {
+  const fetchLikedPosts = async () => {
 
-  setLikedPosts([])
-  const token = localStorage.getItem('userToken');
-  console.log(user)
-   const response = await fetch(`https://media.mw.metropolia.fi/wbma/favourites`,
-           {
-             method: 'GET',
-             headers: {
-               'x-access-token': token,
-             },
-           }
-         );
-   const likedPostsIds = await response.json();
-   console.log(likedPostsIds);
+    setLikedPosts([])
+    const token = localStorage.getItem('userToken');
+    console.log(user)
+    const response = await fetch(`https://media.mw.metropolia.fi/wbma/favourites`,
+      {
+        method: 'GET',
+        headers: {
+          'x-access-token': token,
+        },
+      }
+    );
+    const likedPostsIds = await response.json();
+    console.log(likedPostsIds);
 
     likedPostsIds.map(f => {
-    fetch(`https://media.mw.metropolia.fi/wbma/media/${f.file_id}`).then(res => res.json()).then(data => {
-      console.log(data);
-      setLikedPosts((prev) => [...prev, data]);
-    });
+      fetch(`https://media.mw.metropolia.fi/wbma/media/${f.file_id}`).then(res => res.json()).then(data => {
+        console.log(data);
+        setLikedPosts((prev) => [...prev, data]);
+      });
 
     })
 
 
- };
+  };
 
- useEffect(() => {
+  useEffect(() => {
 
-   fetchLikedPosts();
- }, []);
+    fetchLikedPosts();
+  }, []);
 
 
   return (
-    <Card sx = {{}}>
+    <Card sx={{}}>
       {user && (
-        <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
+        <CardContent sx={{ display: 'flex', justifyContent: 'center' }}>
           <List>
             <ListItem>
 
@@ -143,22 +143,22 @@ const handleTabChange = (event, newValue) => {
         </CardContent>
       )}
       <Tabs value={currentTab} onChange={handleTabChange}>
-  <Tab style={{minWidth:'50%'}} icon={<HouseSidingIcon />} label="Own Posts" value="own" />
-  <Tab style={{minWidth:'50%'}} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
-</Tabs>
-{currentTab === 'own' && <MyFiles myFilesOnly={true} />}
-{currentTab === 'liked' && (
+        <Tab style={{ minWidth: '50%' }} icon={<HouseSidingIcon />} label="Own Posts" value="own" />
+        <Tab style={{ minWidth: '50%' }} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
+      </Tabs>
+      {currentTab === 'own' && <MyFiles myFilesOnly={true} />}
+      {currentTab === 'liked' && (
         <ImageList cols={windowSize.width > 300 ? 1 : 2} gap={8}>
           {likedPosts.map(post => (
             <div key={post.file_id}>
-             <img
-        src={
-          post.media_type !== 'audio'
-            ? mediaUrl + post.thumbnails.w640
-            : './vite.svg'
-        }
-        alt={post.title}
-      />
+              <img
+                src={
+                  post.media_type !== 'audio'
+                    ? mediaUrl + post.thumbnails.w640
+                    : './vite.svg'
+                }
+                alt={post.title}
+              />
               <p>{post.title}</p>
             </div>
 

@@ -1,13 +1,13 @@
 import React from 'react';
-import {Tabs, Typography} from '@mui/material';
+import { Tabs, Typography } from '@mui/material';
 import MediaTable from '../components/MediaTable';
 
-const MyFiles = () => {
+const MyFiles = ({ showSearchField }) => {
   return (
     <>
       <Typography component="h1" variant="h3">
       </Typography>
-      <MediaTable myFilesOnly={true} />
+      <MediaTable myFilesOnly={true} showSearch={showSearchField = false} />
 
     </>
 

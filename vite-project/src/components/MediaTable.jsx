@@ -6,7 +6,7 @@ import { useWindowSize } from '../hooks/WindowHooks';
 import gif from '../assets/noresults.gif'
 import MediaRow from './MediaRow';
 
-const MediaTable = ({ myFilesOnly = false }) => {
+const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
   const { mediaArray, deleteMedia } = useMedia(myFilesOnly);
   const windowSize = useWindowSize();
   const [searchText, setSearchText] = useState('');
@@ -28,7 +28,9 @@ const MediaTable = ({ myFilesOnly = false }) => {
 
   return (
     <>
-      <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
+      {showSearch && (
+        <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
+      )}
       {loading ? (
         <Typography variant="h6">Loading...</Typography>
       ) : filteredMediaArray.length === 0 ? (
@@ -49,6 +51,7 @@ const MediaTable = ({ myFilesOnly = false }) => {
 
 MediaTable.propTypes = {
   myFilesOnly: PropTypes.bool,
+  showSearch: PropTypes.bool,
 };
 
 export default MediaTable;
