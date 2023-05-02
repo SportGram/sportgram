@@ -5,8 +5,6 @@ import MediaTable from '../components/MediaTable';
 const MyFiles = () => {
   return (
     <>
-      <Typography component="h1" variant="h3">
-      </Typography>
       <MediaTable myFilesOnly={true} />
 
     </>

@@ -1,9 +1,13 @@
 import { AccountCircle, Badge, ContactMail, Tag } from '@mui/icons-material';
 import {
   Avatar,
+  Button,
+  ButtonGroup,
   Card,
   CardContent,
+  IconButton,
   ImageList,
+  ImageListItem,
   ImageListItemBar,
   List,
   ListItem,
@@ -22,6 +26,8 @@ import HouseSidingIcon from '@mui/icons-material/HouseSiding';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useFavourite } from '../hooks/ApiHooks';
 import { useWindowSize } from '../hooks/WindowHooks';
+import { Link } from 'react-router-dom';
+
 
 const Profile = () => {
   const windowSize = useWindowSize;
@@ -142,32 +148,46 @@ const handleTabChange = (event, newValue) => {
 
         </CardContent>
       )}
+
       <Tabs value={currentTab} onChange={handleTabChange}>
   <Tab style={{minWidth:'50%'}} icon={<HouseSidingIcon />} label="Own Posts" value="own" />
   <Tab style={{minWidth:'50%'}} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
 </Tabs>
-{currentTab === 'own' && <MyFiles myFilesOnly={true} />}
+{currentTab === 'own' && (
+  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+    <MyFiles myFilesOnly={true} />
+  </div>
+)}
+
+
 {currentTab === 'liked' && (
-        <ImageList cols={windowSize.width > 300 ? 1 : 2} gap={8}>
-          {likedPosts.map(post => (
-            <div key={post.file_id}>
-             <img
-        src={
-          post.media_type !== 'audio'
-            ? mediaUrl + post.thumbnails.w640
-            : './vite.svg'
-        }
-        alt={post.title}
-      />
-              <p>{post.title}</p>
-            </div>
 
-          ))}
-        </ImageList>
+    <ImageList cols={1} gap={8} sx={{ maxWidth: '500px', margin: 'auto', marginTop: '8px',}} >
+      {likedPosts.map(post => (
+        <ImageListItem>
 
-      )}
-    </Card>
+          <img
+            src={
+              post.media_type !== 'audio'
+                ? mediaUrl + post.thumbnails.w640
+                : './vite.svg'
+            }
+            alt={post.title}
+          />
+        <ImageListItemBar style={{textAlign: 'center', overflow: 'hidden'}}
+            title={post.title}
 
+          />
+
+        </ImageListItem>
+      ))}
+    </ImageList>
+
+)}
+
+
+
+</Card>
   );
 };
 
