@@ -4,6 +4,7 @@ import {
   ContactMail,
   LockReset,
   Edit,
+  Tag,
 } from '@mui/icons-material';
 import {
   Avatar,
@@ -200,7 +201,7 @@ const EditProfile = () => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <Badge />
+                <Tag />
               </ListItemIcon>
               <ListItemText primary={user.user_id} />
             </ListItem>

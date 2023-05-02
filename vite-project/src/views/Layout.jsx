@@ -15,11 +15,14 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import React from 'react';
+
 import {useContext, useEffect} from 'react';
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
-import {useUser} from '../hooks/ApiHooks';
+import {useUser, useTag} from '../hooks/ApiHooks';
 import {themeOptions} from '../themes/themeOptions';
+import {mediaUrl} from '../utils/variables';
+
 import {
   AddCircleOutlined,
   HomeOutlined,
@@ -35,6 +38,7 @@ const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [avatar, setAvatar] = React.useState(null);
 
   const getUserInfo = async () => {
     const userToken = localStorage.getItem('userToken');
@@ -43,12 +47,29 @@ const Layout = () => {
       const userData = await getUserByToken(userToken);
       if (userData) {
         setUser(userData);
+        fetchAvatar();
         const target = location.pathname === '/' ? '/home' : location.pathname;
         navigate(target);
         return;
       }
     }
     navigate('/');
+  };
+
+  const fetchAvatar = async () => {
+    try {
+      if (user) {
+        const {getTag} = useTag();
+        const avatars = await getTag('avatar_' + user.user_id);
+        if (avatars.length > 0) {
+          const ava = avatars[avatars.length - 1];
+          ava.filename = mediaUrl + ava.filename;
+          setAvatar(ava);
+        }
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   useEffect(() => {
@@ -101,7 +122,10 @@ const Layout = () => {
               {user ? (
                 <>
                   <IconButton onClick={handleMenuClick}>
-                    <Avatar src={user.fullname} alt={user.username} />
+                    <Avatar
+                      src={avatar ? avatar.filename : ''}
+                      alt={user.username}
+                    />
                   </IconButton>
 
                   <Menu

@@ -1,6 +1,6 @@
-import {useState, useEffect, useContext} from 'react';
-import {appId, baseUrl} from '../utils/variables';
-import {MediaContext} from '../contexts/MediaContext';
+import { useState, useEffect, useContext } from 'react';
+import { appId, baseUrl } from '../utils/variables';
+import { MediaContext } from '../contexts/MediaContext';
 
 const doFetch = async (url, options) => {
   const response = await fetch(url, options);
@@ -16,7 +16,7 @@ const doFetch = async (url, options) => {
 
 const useMedia = (myFilesOnly = false) => {
   const [mediaArray, setMediaArray] = useState([]);
-  const {user, update} = useContext(MediaContext);
+  const { user, update } = useContext(MediaContext);
   const getMedia = async () => {
     try {
       let files = await useTag().getTag(appId);
@@ -31,10 +31,13 @@ const useMedia = (myFilesOnly = false) => {
         })
       );
       setMediaArray(filesWithThumbnail);
+      console.log(filesWithThumbnail)
     } catch (error) {
       console.error('getMedia', error.message);
     }
   };
+
+
 
   useEffect(() => {
     try {
@@ -77,7 +80,7 @@ const useMedia = (myFilesOnly = false) => {
     return await doFetch(baseUrl + 'media/' + id, options);
   };
 
-  return {mediaArray, postMedia, deleteMedia, putMedia};
+  return { mediaArray, postMedia, deleteMedia, putMedia };
 };
 
 const useUser = () => {
@@ -103,7 +106,7 @@ const useUser = () => {
   };
 
   const getCheckUser = async (username) => {
-    const {available} = await doFetch(baseUrl + 'users/username/' + username);
+    const { available } = await doFetch(baseUrl + 'users/username/' + username);
     return available;
   };
 
@@ -129,7 +132,7 @@ const useUser = () => {
     return await doFetch(baseUrl + 'users', options);
   };
 
-  return {postUser, getUserByToken, getCheckUser, getUser, updateUser};
+  return { postUser, getUserByToken, getCheckUser, getUser, updateUser };
 };
 
 const useAuthentication = () => {
@@ -143,7 +146,7 @@ const useAuthentication = () => {
     };
     return await doFetch(baseUrl + 'login', options);
   };
-  return {postLogin};
+  return { postLogin };
 };
 
 const useTag = () => {
@@ -168,7 +171,7 @@ const useTag = () => {
     return await doFetch(baseUrl + 'tags', fetchOptions);
   };
 
-  return {getTag, postTag};
+  return { getTag, postTag };
 };
 
 const useFavourite = () => {
@@ -199,7 +202,7 @@ const useFavourite = () => {
     return await doFetch(baseUrl + 'favourites/file/' + id, options);
   };
 
-  return {postFavourite, getFavourites, deleteFavourite};
+  return { postFavourite, getFavourites, deleteFavourite };
 };
 
-export {useMedia, useUser, useAuthentication, useTag, useFavourite};
+export { useMedia, useUser, useAuthentication, useTag, useFavourite };

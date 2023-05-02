@@ -50,13 +50,13 @@ const MediaRow = ({file, deleteMedia}) => {
         alt={file.title}
       />
       <ImageListItemBar
-      
+
         title={file.title.slice(0, 42) + (file.title.length > 42 ? '...' : '')}
         subtitle={"@" + fileUser.username || file.user_id}
 
 
         actionIcon={
-          <ButtonGroup>
+          <ButtonGroup style={{margin: '0.5rem'}}>
             <Button
               component={Link}
               variant="contained"
