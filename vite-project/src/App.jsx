@@ -36,12 +36,6 @@ const App = () => {
             <Route path="/myfiles" element={<MyFiles />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/update" element={<Update />} />
-
-
-
-
-
-
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>
