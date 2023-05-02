@@ -33,8 +33,8 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 const Layout = () => {
-  const { user, setUser } = useContext(MediaContext);
-  const { getUserByToken } = useUser();
+  const {user, setUser} = useContext(MediaContext);
+  const {getUserByToken} = useUser();
   const navigate = useNavigate();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -76,6 +76,10 @@ const Layout = () => {
     getUserInfo();
   }, []);
 
+  useEffect(() => {
+    fetchAvatar();
+  }, [avatar]);
+
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -99,7 +103,6 @@ const Layout = () => {
       <Container maxWidth="xl" style={{paddingBottom: '65px'}}>
         <AppBar position="sticky" style={{top: '0'}}>
           <Toolbar sx={{justifyContent: 'center'}}>
-
             <Typography
               variant="h6"
               fontSize={32}
@@ -122,7 +125,6 @@ const Layout = () => {
             >
               {user ? (
                 <>
-
                   <IconButton onClick={handleMenuClick}>
                     <Avatar
                       src={avatar ? avatar.filename : ''}
@@ -163,14 +165,14 @@ const Layout = () => {
                   <Button
                     component={Link}
                     to="/login"
-                    sx={{ my: 1, color: 'white' }}
+                    sx={{my: 1, color: 'white'}}
                   >
                     Login
                   </Button>
                   <Button
                     component={Link}
                     to="/signup"
-                    sx={{ my: 1, color: 'white' }}
+                    sx={{my: 1, color: 'white'}}
                   >
                     Signup
                   </Button>
@@ -197,20 +199,20 @@ const Layout = () => {
         <BottomNavigationAction
           component={Link}
           to="/profile"
-          label={<Typography sx={{ color: 'white' }}>Profile</Typography>}
-          icon={<AccountCircleOutlined sx={{ my: 1, color: 'white' }} />}
+          label={<Typography sx={{color: 'white'}}>Profile</Typography>}
+          icon={<AccountCircleOutlined sx={{my: 1, color: 'white'}} />}
         />
         <BottomNavigationAction
           component={Link}
           to="/upload"
-          label={<Typography sx={{ color: 'white' }}>Upload</Typography>}
-          icon={<AddCircleOutlined sx={{ my: 1, color: 'white' }} />}
+          label={<Typography sx={{color: 'white'}}>Upload</Typography>}
+          icon={<AddCircleOutlined sx={{my: 1, color: 'white'}} />}
         />
         <BottomNavigationAction
           component={Link}
           to="/home"
-          label={<Typography sx={{ color: 'white' }}>Home</Typography>}
-          icon={<HomeOutlined sx={{ my: 1, color: 'white' }} />}
+          label={<Typography sx={{color: 'white'}}>Home</Typography>}
+          icon={<HomeOutlined sx={{my: 1, color: 'white'}} />}
         />
       </BottomNavigation>
     </ThemeProvider>
