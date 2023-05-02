@@ -1,4 +1,4 @@
-import {Box, Button, Slider} from '@mui/material';
+import {Box, Button, Input, Slider, TextField, Typography} from '@mui/material';
 import useForm from '../hooks/FormHooks';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
@@ -95,21 +95,24 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
           `,
         }}
       />
-      <form onSubmit={handleSubmit}>
-        <textarea
+      <form style={{display: 'flex',  justifyContent: 'center', margin:'0.5rem',}} onSubmit={handleSubmit}>
+
+        <TextField
           onChange={handleInputChange}
           type="text"
           name="title"
+          label='Title here...'
           value={inputs.title}
-        ></textarea>
+        ></TextField>
 
-        <input
+        <Input
+        style={{margin: '0.6rem'}}
           onChange={handleFileChange}
           type="file"
           name="file"
           accept="image/*,video/*,audio/*"
-        ></input>
-        <Button type="submit">Upload</Button>
+        ></Input>
+        <Button type="submit" variant='outlined'>Upload</Button>
       </form>
       <Slider
         name="brightness"
