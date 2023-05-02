@@ -7,16 +7,22 @@ import gif from '../assets/noresults.gif';
 import MediaRow from './MediaRow';
 import { useLocation } from 'react-router-dom';
 
-const MediaTable = ({ myFilesOnly = false }) => {
-  const location = useLocation();
+
+
+  
+
+const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
+const location = useLocation();
   const { mediaArray, deleteMedia } = useMedia(myFilesOnly);
   const windowSize = useWindowSize();
   const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const filteredMediaArray = mediaArray.filter((item) =>
-    item.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const filteredMediaArray = mediaArray
+    .filter((item) =>
+      item.title.toLowerCase().includes(searchText.toLowerCase())
+    )
+    .sort((a, b) => new Date(b.time_added) - new Date(a.time_added));
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);
@@ -30,8 +36,13 @@ const MediaTable = ({ myFilesOnly = false }) => {
 
   return (
     <>
+
       {location.pathname !== '/profile' && (
         <TextField className="search" variant="standard" label="Search posts..." onChange={handleSearch} />
+
+      {showSearch && (
+        <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
+
       )}
       {loading ? (
         <Typography variant="h6">Loading...</Typography>
@@ -53,6 +64,7 @@ const MediaTable = ({ myFilesOnly = false }) => {
 
 MediaTable.propTypes = {
   myFilesOnly: PropTypes.bool,
+  showSearch: PropTypes.bool,
 };
 
 export default MediaTable;

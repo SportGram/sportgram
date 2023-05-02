@@ -63,9 +63,10 @@ const Profile = () => {
   const [currentTab, setCurrentTab] = useState('own');
   const [likedPosts, setLikedPosts] = useState([]);
 
-const handleTabChange = (event, newValue) => {
-  setCurrentTab(newValue);
-};
+  const handleTabChange = (event, newValue) => {
+    setCurrentTab(newValue);
+  };
+
 
 const fetchLikedPosts = async () => {
   const token = localStorage.getItem('userToken');
@@ -89,18 +90,19 @@ const fetchLikedPosts = async () => {
 
 
 
- };
 
- useEffect(() => {
+  };
 
-   fetchLikedPosts();
- }, []);
+  useEffect(() => {
+
+    fetchLikedPosts();
+  }, []);
 
 
   return (
-    <Card sx = {{}}>
+    <Card sx={{}}>
       {user && (
-        <CardContent sx={{display: 'flex', justifyContent: 'center'}}>
+        <CardContent sx={{ display: 'flex', justifyContent: 'center' }}>
           <List>
             <ListItem>
 
@@ -147,6 +149,7 @@ const fetchLikedPosts = async () => {
       )}
 
       <Tabs value={currentTab} onChange={handleTabChange}>
+
   <Tab style={{minWidth:'50%'}} icon={<HouseSidingIcon />} label="Own Posts" value="own" />
   <Tab style={{minWidth:'50%'}} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
 </Tabs>
@@ -155,8 +158,6 @@ const fetchLikedPosts = async () => {
     <MyFiles myFilesOnly={true} />
   </div>
 )}
-
-
 {currentTab === 'liked' && (
 
     <ImageList cols={1} gap={8} sx={{ maxWidth: '500px', margin: 'auto', marginTop: '8px',}} >
