@@ -67,29 +67,26 @@ const handleTabChange = (event, newValue) => {
   setCurrentTab(newValue);
 };
 
- const fetchLikedPosts = async () => {
-
-  setLikedPosts([])
+const fetchLikedPosts = async () => {
   const token = localStorage.getItem('userToken');
-  console.log(user)
-   const response = await fetch(`https://media.mw.metropolia.fi/wbma/favourites`,
-           {
-             method: 'GET',
-             headers: {
-               'x-access-token': token,
-             },
-           }
-         );
-   const likedPostsIds = await response.json();
-   console.log(likedPostsIds);
+  const response = await fetch(`https://media.mw.metropolia.fi/wbma/favourites`, {
+    method: 'GET',
+    headers: {
+      'x-access-token': token,
+    },
+  });
+  const likedPostsIds = await response.json();
+  console.log(likedPostsIds);
 
-    likedPostsIds.map(f => {
-    fetch(`https://media.mw.metropolia.fi/wbma/media/${f.file_id}`).then(res => res.json()).then(data => {
-      console.log(data);
-      setLikedPosts((prev) => [...prev, data]);
-    });
+  const fetchedPosts = [];
+  for (const f of likedPostsIds) {
+    const res = await fetch(`https://media.mw.metropolia.fi/wbma/media/${f.file_id}`);
+    const data = await res.json();
+    console.log(data);
+    fetchedPosts.push(data);
+  }
+  setLikedPosts(fetchedPosts);
 
-    })
 
 
  };
