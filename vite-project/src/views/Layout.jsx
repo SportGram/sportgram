@@ -19,9 +19,11 @@ import React from 'react';
 import {useContext, useEffect} from 'react';
 import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
-import {useUser, useTag} from '../hooks/ApiHooks';
+import {useUser} from '../hooks/ApiHooks';
 import {themeOptions} from '../themes/themeOptions';
 import {mediaUrl} from '../utils/variables';
+
+import {useTag} from '../hooks/ApiHooks';
 
 import {
   AddCircleOutlined,
@@ -55,16 +57,16 @@ const Layout = () => {
     }
     navigate('/');
   };
+  const {getTag} = useTag();
 
   const fetchAvatar = async () => {
     try {
       if (user) {
-        const {getTag} = useTag();
         const avatars = await getTag('avatar_' + user.user_id);
         if (avatars.length > 0) {
-          const ava = avatars[avatars.length - 1];
-          ava.filename = mediaUrl + ava.filename;
-          setAvatar(ava);
+          const ava = avatars.pop();
+          const updatedAvatar = {...ava, filename: mediaUrl + ava.filename};
+          setAvatar(updatedAvatar);
         }
       }
     } catch (error) {
@@ -75,6 +77,10 @@ const Layout = () => {
   useEffect(() => {
     getUserInfo();
   }, []);
+
+  useEffect(() => {
+    fetchAvatar();
+  }, [user, avatar]);
 
   const handleMenuClick = (event) => {
     setAnchorEl(event.currentTarget);

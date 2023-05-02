@@ -39,9 +39,6 @@ const location = useLocation();
 
       {location.pathname !== '/profile' && (
         <TextField className="search" variant="standard" label="Search posts..." onChange={handleSearch} />
-
-
-
       )}
       {loading ? (
         <Typography variant="h6">Loading...</Typography>
