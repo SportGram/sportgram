@@ -1,4 +1,4 @@
-import {Box, Button, Slider} from '@mui/material';
+import {Box, Button, Slider, TextField, Typography} from '@mui/material';
 import useForm from '../hooks/FormHooks';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
@@ -81,16 +81,18 @@ const Update = () => {
           `,
         }}
       />
-      <form onSubmit={handleSubmit}>
-        <textarea
+      <form style={{display: 'flex',  justifyContent: 'center', margin:'0.5rem',}} onSubmit={handleSubmit}>
+        <TextField
           onChange={handleInputChange}
           type="text"
           name="title"
+          label='Title here...'
           value={inputs.title}
-        ></textarea>
-        <Button type="submit">Upload</Button>
+        ></TextField>
+        <Button variant='outlined' type="submit" style={{margin:'0.5rem'}}>Upload</Button>
       </form>
-      <Slider
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Brightness</Typography>
+      <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="brightness"
         min={0}
         max={200}
@@ -98,8 +100,9 @@ const Update = () => {
         valueLabelDisplay="auto"
         onChange={handleFilterChange}
         value={filterInputs.brightness}
-      />
-      <Slider
+         />
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Contrast</Typography>
+       <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="contrast"
         min={0}
         max={200}
@@ -108,7 +111,8 @@ const Update = () => {
         onChange={handleFilterChange}
         value={filterInputs.contrast}
       />
-      <Slider
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Saturation</Typography>
+      <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="saturation"
         min={0}
         max={200}
@@ -117,7 +121,8 @@ const Update = () => {
         onChange={handleFilterChange}
         value={filterInputs.saturation}
       />
-      <Slider
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Sepia</Typography>
+      <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="sepia"
         min={0}
         max={100}
@@ -126,6 +131,7 @@ const Update = () => {
         onChange={handleFilterChange}
         value={filterInputs.sepia}
       />
+
     </Box>
   );
 };
