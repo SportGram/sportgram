@@ -1,4 +1,4 @@
-import { AccountCircle, Badge, ContactMail, Tag } from '@mui/icons-material';
+import { AccountCircle, Badge, ContactMail, Edit, Tag } from '@mui/icons-material';
 import {
   Avatar,
   Button,
@@ -118,6 +118,9 @@ const fetchLikedPosts = async () => {
                 />
               </ListItemAvatar>
             </ListItem>
+            <ListItem sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Button component={Link}  variant='outlined'  to="/edit" endIcon={<Edit />}>Edit Profile</Button>
+        </ListItem>
             <ListItem>
               <ListItemIcon>
                 <AccountCircle />
@@ -160,7 +163,7 @@ const fetchLikedPosts = async () => {
 )}
 {currentTab === 'liked' && (
 
-    <ImageList cols={1} gap={8} sx={{ maxWidth: '500px', margin: 'auto', marginTop: '8px',}} >
+    <ImageList cols={1} gap={8} sx={{ maxWidth: '500px', margin: 'auto', marginTop: '10px',}} >
       {likedPosts.map(post => (
         <ImageListItem>
 
