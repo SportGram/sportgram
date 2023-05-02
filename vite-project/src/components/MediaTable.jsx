@@ -3,10 +3,16 @@ import { ImageList, TextField, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useMedia } from '../hooks/ApiHooks';
 import { useWindowSize } from '../hooks/WindowHooks';
-import gif from '../assets/noresults.gif'
+import gif from '../assets/noresults.gif';
 import MediaRow from './MediaRow';
+import { useLocation } from 'react-router-dom';
+
+
+
+  
 
 const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
+const location = useLocation();
   const { mediaArray, deleteMedia } = useMedia(myFilesOnly);
   const windowSize = useWindowSize();
   const [searchText, setSearchText] = useState('');
@@ -30,6 +36,10 @@ const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
 
   return (
     <>
+
+      {location.pathname !== '/profile' && (
+        <TextField className="search" variant="standard" label="Search posts..." onChange={handleSearch} />
+
       {showSearch && (
         <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
 
