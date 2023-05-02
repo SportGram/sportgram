@@ -1,9 +1,5 @@
-import {
-  Button,
-  ButtonGroup,
-  ImageListItem,
-  ImageListItemBar,
-} from '@mui/material';
+
+import { Box, Button, ButtonGroup, Hidden, ImageListItem, ImageListItemBar } from '@mui/material';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
@@ -54,8 +50,11 @@ const MediaRow = ({file, deleteMedia}) => {
         alt={file.title}
       />
       <ImageListItemBar
-        title={file.title}
-        subtitle={'@' + fileUser.username || file.user_id}
+      
+        title={file.title.slice(0, 42) + (file.title.length > 42 ? '...' : '')}
+        subtitle={"@" + fileUser.username || file.user_id}
+
+
         actionIcon={
           <ButtonGroup>
             <Button

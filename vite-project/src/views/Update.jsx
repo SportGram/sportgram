@@ -82,16 +82,11 @@ const Update = () => {
         }}
       />
       <form onSubmit={handleSubmit}>
-        <input
+        <textarea
           onChange={handleInputChange}
           type="text"
           name="title"
           value={inputs.title}
-        ></input>
-        <textarea
-          onChange={handleInputChange}
-          name="description"
-          value={inputs.description}
         ></textarea>
         <Button type="submit">Upload</Button>
       </form>
