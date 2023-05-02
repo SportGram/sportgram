@@ -1,4 +1,4 @@
-import { AccountCircle, Badge, ContactMail } from '@mui/icons-material';
+import { AccountCircle, Badge, ContactMail, Tag } from '@mui/icons-material';
 import {
   Avatar,
   Card,
@@ -133,7 +133,7 @@ const handleTabChange = (event, newValue) => {
             </ListItem>
             <ListItem>
               <ListItemIcon>
-                <Badge />
+                <Tag />
               </ListItemIcon>
               <ListItemText primary={user.user_id} />
             </ListItem>
@@ -143,8 +143,8 @@ const handleTabChange = (event, newValue) => {
         </CardContent>
       )}
       <Tabs value={currentTab} onChange={handleTabChange}>
-  <Tab icon={<HouseSidingIcon />} label="Own Posts" value="own" />
-  <Tab icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
+  <Tab style={{minWidth:'50%'}} icon={<HouseSidingIcon />} label="Own Posts" value="own" />
+  <Tab style={{minWidth:'50%'}} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
 </Tabs>
 {currentTab === 'own' && <MyFiles myFilesOnly={true} />}
 {currentTab === 'liked' && (
