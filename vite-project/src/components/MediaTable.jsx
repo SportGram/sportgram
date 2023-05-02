@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 
 
-  
+
 
 const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
 const location = useLocation();
@@ -40,8 +40,7 @@ const location = useLocation();
       {location.pathname !== '/profile' && (
         <TextField className="search" variant="standard" label="Search posts..." onChange={handleSearch} />
 
-      {showSearch && (
-        <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
+
 
       )}
       {loading ? (
@@ -60,7 +59,8 @@ const location = useLocation();
       )}
     </>
   );
-};
+        };
+
 
 MediaTable.propTypes = {
   myFilesOnly: PropTypes.bool,
