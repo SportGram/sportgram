@@ -114,6 +114,8 @@ const Layout = () => {
                 textAlign: 'center',
                 flexGrow: 1,
               }}
+              component={Link}
+              to="/home"
             >
               SportsGram
             </Typography>
