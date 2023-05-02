@@ -12,9 +12,11 @@ const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
   const [searchText, setSearchText] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const filteredMediaArray = mediaArray.filter((item) =>
-    item.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const filteredMediaArray = mediaArray
+    .filter((item) =>
+      item.title.toLowerCase().includes(searchText.toLowerCase())
+    )
+    .sort((a, b) => new Date(b.time_added) - new Date(a.time_added));
 
   const handleSearch = (e) => {
     setSearchText(e.target.value);
@@ -30,6 +32,7 @@ const MediaTable = ({ myFilesOnly = false, showSearch = true }) => {
     <>
       {showSearch && (
         <TextField className='search' variant="standard" label="Search posts..." onChange={handleSearch} />
+
       )}
       {loading ? (
         <Typography variant="h6">Loading...</Typography>
