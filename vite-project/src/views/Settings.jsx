@@ -19,11 +19,9 @@ const Settings = () => {
         <Logout />
       ) : (
         <>
-          <Typography component="h1" variant="h3">
-            Settings
-          </Typography>
-          <Stack
 
+          <Stack
+            marginTop={20}
             direction="column"
             justifyContent="center"
             alignItems="center"
