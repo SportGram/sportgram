@@ -68,6 +68,8 @@ const Profile = () => {
   };
 
 
+
+
 const fetchLikedPosts = async () => {
   const token = localStorage.getItem('userToken');
   const response = await fetch(`https://media.mw.metropolia.fi/wbma/favourites`, {
@@ -157,13 +159,13 @@ const fetchLikedPosts = async () => {
   <Tab style={{minWidth:'50%'}} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
 </Tabs>
 {currentTab === 'own' && (
-  <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+  <div style={{ display: 'flex', justifyContent: 'center', width: '100%', paddingBottom: '1.7rem' }}>
     <MyFiles myFilesOnly={true} />
   </div>
 )}
 {currentTab === 'liked' && (
 
-    <ImageList cols={1} gap={8} sx={{ maxWidth: '500px', margin: 'auto', marginTop: '10px',}} >
+    <ImageList  cols={1} gap={20} sx={{ maxWidth: '640px', margin: 'auto', marginTop: '10px', paddingBottom: '2.1rem',paddingLeft:'10px', paddingRight:'10px'}} >
       {likedPosts.map(post => (
         <ImageListItem>
 
@@ -177,6 +179,7 @@ const fetchLikedPosts = async () => {
           />
         <ImageListItemBar style={{textAlign: 'center', overflow: 'hidden'}}
             title={post.title}
+
 
           />
 

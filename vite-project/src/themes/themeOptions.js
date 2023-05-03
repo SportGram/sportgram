@@ -26,6 +26,9 @@ const themeOptions = {
     h3: {
       fontFamily: 'akshar',
     },
+    h5:{
+      fontFamily: 'akshar',
+    },
     h6: {
       color: '#CFB53B',
       fontFamily: 'lobster',
