@@ -1,10 +1,11 @@
-import {Box, Button, Input, Slider, TextField, Typography} from '@mui/material';
+import {Box, Button, Card, Input, Slider, TextField, Typography} from '@mui/material';
 import useForm from '../hooks/FormHooks';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {appId} from '../utils/variables';
 import {useMedia, useTag} from '../hooks/ApiHooks';
 import React from 'react';
+import { LightMode } from '@mui/icons-material';
 
 const Upload = ({mediaTag, noRedirect, onUpload}) => {
   const [file, setFile] = useState(null);
@@ -114,7 +115,9 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
         ></Input>
         <Button type="submit" variant='outlined'>Upload</Button>
       </form>
-      <Slider
+
+        <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Brightness</Typography>
+      <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="brightness"
         min={0}
         max={200}
@@ -122,8 +125,9 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
         valueLabelDisplay="auto"
         onChange={handleFilterChange}
         value={filterInputs.brightness}
-      />
-      <Slider
+         />
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Contrast</Typography>
+       <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="contrast"
         min={0}
         max={200}
@@ -132,7 +136,8 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
         onChange={handleFilterChange}
         value={filterInputs.contrast}
       />
-      <Slider
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Saturation</Typography>
+      <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="saturation"
         min={0}
         max={200}
@@ -141,7 +146,8 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
         onChange={handleFilterChange}
         value={filterInputs.saturation}
       />
-      <Slider
+      <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Sepia</Typography>
+      <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
         name="sepia"
         min={0}
         max={100}
@@ -150,6 +156,7 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
         onChange={handleFilterChange}
         value={filterInputs.sepia}
       />
+
     </Box>
   );
 };
