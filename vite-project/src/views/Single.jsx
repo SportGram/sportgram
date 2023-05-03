@@ -116,7 +116,8 @@ const Single = () => {
           title={file.title}
           style={{
             width: '100%',
-            height: 400,
+            height: 500,
+            objectFit: 'contain',
             filter: `
             brightness(${allData.filters.brightness}%)
             contrast(${allData.filters.contrast}%)
