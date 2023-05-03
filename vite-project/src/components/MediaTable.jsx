@@ -48,7 +48,7 @@ const location = useLocation();
           <img src={gif} alt="No search results found" />
         </>
       ) : (
-        <ImageList cols={1} gap={8} sx={{ maxWidth: 500 }}>
+        <ImageList cols={1} gap={20} sx={{ maxWidth: 800, paddingLeft:'10px', paddingRight:'10px' }}>
           {filteredMediaArray.map((item, index) => {
             return <MediaRow key={index} file={item} deleteMedia={deleteMedia} />;
           })}
