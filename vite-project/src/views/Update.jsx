@@ -89,7 +89,7 @@ const Update = () => {
           label='Title here...'
           value={inputs.title}
         ></TextField>
-        <Button variant='outlined' type="submit" style={{margin:'0.5rem'}}>Upload</Button>
+        <Button variant='outlined' type="submit" style={{margin:'0.5rem'}}>Update</Button>
       </form>
       <Typography style={{margin: 'auto',display: 'flex', justifyContent:'center', alignContent:'center'}}>Brightness</Typography>
       <Slider style={{width: '75%', margin:'auto',display: 'flex', justifyContent:'center', alignContent:'center',}}
