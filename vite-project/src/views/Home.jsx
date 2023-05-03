@@ -12,6 +12,9 @@ const Home = () => {
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',
+        paddingBottom: '1.7rem',
+        // backgroundColor: 'red'
+
       }}
     >
       <Typography component="h1" variant="h3"></Typography>

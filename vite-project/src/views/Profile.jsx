@@ -73,6 +73,7 @@ const Profile = () => {
     setCurrentTab(newValue);
   };
 
+
   const fetchLikedPosts = async () => {
     const token = localStorage.getItem('userToken');
     const response = await fetch(
@@ -97,6 +98,7 @@ const Profile = () => {
       fetchedPosts.push(data);
     }
     setLikedPosts(fetchedPosts);
+
   };
 
   useEffect(() => {
@@ -159,49 +161,46 @@ const Profile = () => {
       )}
 
       <Tabs value={currentTab} onChange={handleTabChange}>
-        <Tab
-          style={{minWidth: '50%'}}
-          icon={<HouseSidingIcon />}
-          label="Own Posts"
-          value="own"
-        />
-        <Tab
-          style={{minWidth: '50%'}}
-          icon={<FavoriteIcon />}
-          label="Liked Posts"
-          value="liked"
-        />
-      </Tabs>
-      {currentTab === 'own' && (
-        <div style={{display: 'flex', justifyContent: 'center', width: '100%'}}>
-          <MyFiles myFilesOnly={true} />
-        </div>
-      )}
-      {currentTab === 'liked' && (
-        <ImageList
-          cols={1}
-          gap={8}
-          sx={{maxWidth: '500px', margin: 'auto', marginTop: '10px'}}
-        >
-          {likedPosts.map((post) => (
-            <ImageListItem>
-              <img
-                src={
-                  post.media_type !== 'audio'
-                    ? mediaUrl + post.thumbnails.w640
-                    : './vite.svg'
-                }
-                alt={post.title}
-              />
-              <ImageListItemBar
-                style={{textAlign: 'center', overflow: 'hidden'}}
-                title={post.title}
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
-      )}
-    </Card>
+
+
+  <Tab style={{minWidth:'50%'}} icon={<HouseSidingIcon />} label="Own Posts" value="own" />
+  <Tab style={{minWidth:'50%'}} icon={<FavoriteIcon />} label="Liked Posts" value="liked" />
+</Tabs>
+{currentTab === 'own' && (
+  <div style={{ display: 'flex', justifyContent: 'center', width: '100%', paddingBottom: '1.7rem' }}>
+    <MyFiles myFilesOnly={true} />
+  </div>
+)}
+{currentTab === 'liked' && (
+
+    <ImageList  cols={1} gap={20} sx={{ maxWidth: '640px', margin: 'auto', marginTop: '10px', paddingBottom: '2.1rem',paddingLeft:'10px', paddingRight:'10px'}} >
+      {likedPosts.map(post => (
+        <ImageListItem>
+
+          <img
+            src={
+              post.media_type !== 'audio'
+                ? mediaUrl + post.thumbnails.w640
+                : './vite.svg'
+            }
+            alt={post.title}
+          />
+        <ImageListItemBar style={{textAlign: 'center', overflow: 'hidden'}}
+            title={post.title}
+
+
+          />
+
+        </ImageListItem>
+      ))}
+    </ImageList>
+
+)}
+
+
+
+</Card>
+
   );
 };
 
