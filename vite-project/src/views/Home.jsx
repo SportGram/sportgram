@@ -12,7 +12,7 @@ const Home = () => {
         alignItems: 'center',
         width: '100%',
         paddingBottom: '1.7rem',
-        // backgroundColor: 'red'
+
 
       }}
     >
