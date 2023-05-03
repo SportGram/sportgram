@@ -102,7 +102,7 @@ const Layout = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      <Container maxWidth='m' style={{paddingBottom: '100px' , paddingLeft:'0px', paddingRight:'0px'}}>
+      <Container maxWidth='m' style={{paddingBottom: '100px' , paddingLeft:'0px', paddingRight:'0px', }}>
         <AppBar position="sticky" style={{top: '0'}}>
           <Toolbar sx={{justifyContent: 'center'}}>
             <Typography

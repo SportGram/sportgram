@@ -9,6 +9,8 @@ import { LightMode } from '@mui/icons-material';
 
 const Upload = ({mediaTag, noRedirect, onUpload}) => {
   const [file, setFile] = useState(null);
+  const [videoUrl, setVideoUrl] = useState(null);
+  const videoRef = useRef();
   const [selectedImage, setSelectedImage] = useState(
     'https://t4.ftcdn.net/jpg/02/17/88/73/360_F_217887350_mDfLv2ootQNeffWXT57VQr8OX7IvZKvB.jpg'
   );
