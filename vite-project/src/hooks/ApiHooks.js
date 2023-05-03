@@ -205,4 +205,25 @@ const useFavourite = () => {
   return { postFavourite, getFavourites, deleteFavourite };
 };
 
-export { useMedia, useUser, useAuthentication, useTag, useFavourite };
+
+export const getUserProfile = async (userId) => {
+  try {
+    const response = await fetch(`${baseUrl}/user/${userId}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Failed to fetch user profile');
+  }
+};
+
+export const getUserPosts = async (userId) => {
+  try {
+    const response = await fetch(`${baseUrl}/user/${userId}/posts`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw new Error('Failed to fetch user posts');
+  }
+};
+
+export {useMedia, useUser, useAuthentication, useTag, useFavourite};
