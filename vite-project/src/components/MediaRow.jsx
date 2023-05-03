@@ -61,8 +61,9 @@ const MediaRow = ({file, deleteMedia}) => {
       <ImageListItemBar
         title={file.title.slice(0, 42) + (file.title.length > 42 ? '...' : '')}
         subtitle={
-          <Link to={`/userprofile/${file.user_id}`} style={{color: '#C6AD38'}}>
-            {fileUser.username || file.user_id}
+          <Link to={`/userprofile/${file.user_id}`} style={{color: '#C6AD38', fontSize: '0.9rem' }}
+          >
+            {'@' + fileUser.username || file.user_id}
           </Link>
         }
         actionIcon={
