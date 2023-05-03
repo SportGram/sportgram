@@ -97,10 +97,9 @@ const Single = () => {
 
   return (
     <>
-      <Typography component="h1" variant="h3">
-        {file.title}
-      </Typography>
-      <Card>
+
+      <Card style={{width:'90%', justifyContent:'center', display:'flex', margin: 'auto'
+    , flexDirection:'column'}}>
         {/*
         toinen tapa
         {file.media_type === 'image' && <img src="" alt="" />}
@@ -113,8 +112,9 @@ const Single = () => {
           poster={mediaUrl + file.screenshot}
           component={componentType}
           src={mediaUrl + file.filename}
-          title={file.title}
+           title={file.title}
           style={{
+            marginTop:'0.5rem',
             width: '100%',
             height: 500,
             objectFit: 'contain',
@@ -128,7 +128,9 @@ const Single = () => {
           }}
         />
         <CardContent>
-          <Typography variant="body1">{allData.desc}</Typography>
+        <Typography component="h1" variant="h5" >
+        {file.title}
+      </Typography>
           <Typography variant="body2">By: {owner.username}</Typography>
           <Typography variant="body2">Likes: {likes}</Typography>
           <ButtonGroup>
