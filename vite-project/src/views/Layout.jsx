@@ -168,10 +168,17 @@ const Layout = () => {
                 <>
                   <Button
                     component={Link}
-                    to="/"
+                    to="/login"
                     sx={{ my: 1, color: 'white' }}
                   >
                     Login
+                  </Button>
+                  <Button
+                    component={Link}
+                    to="/signup"
+                    sx={{ my: 1, color: 'white' }}
+                  >
+                    Signup
                   </Button>
                 </>
               )}
