@@ -12,6 +12,7 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
   const [selectedImage, setSelectedImage] = useState(
     'https://t4.ftcdn.net/jpg/02/17/88/73/360_F_217887350_mDfLv2ootQNeffWXT57VQr8OX7IvZKvB.jpg'
   );
+  const [selectedVideo, setSelectedVideo] = useState();
   const { postMedia } = useMedia();
   const { postTag } = useTag();
   const navigate = useNavigate();
@@ -62,7 +63,9 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
     setFile(event.target.files[0]);
     const reader = new FileReader();
     reader.addEventListener('load', () => {
+      console.log(reader.result);
       setSelectedImage(reader.result);
+      setSelectedVideo(reader.result);
     });
     reader.readAsDataURL(event.target.files[0]);
   };
@@ -81,21 +84,52 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
 
   return (
     <Box>
-      <img
-        src={selectedImage}
-        alt="preview"
-        style={{
-          width: '100%',
-          height: 400,
-          objectFit: 'contain',
-          filter: `
+{file ? (
+  file.type.startsWith('image/') ? (
+    <img
+      src={selectedImage || './src/assets/uploadicon.svg'}
+      alt="preview"
+      style={{
+        width: '100%',
+        height: 400,
+        objectFit: 'contain',
+        filter: `
           brightness(${filterInputs.brightness}%)
           contrast(${filterInputs.contrast}%)
           saturate(${filterInputs.saturation}%)
           sepia(${filterInputs.sepia}%)
-          `,
-        }}
-      />
+        `,
+      }}
+    />
+  ) : (
+    <video
+      src={selectedVideo || './src/assets/uploadicon.svg'}
+      alt="preview"
+      style={{
+        width: '100%',
+        height: 400,
+        objectFit: 'contain',
+        filter: `
+          brightness(${filterInputs.brightness}%)
+          contrast(${filterInputs.contrast}%)
+          saturate(${filterInputs.saturation}%)
+          sepia(${filterInputs.sepia}%)
+        `,
+      }}
+    />
+  )
+) : (
+  <img
+    src="./src/assets/uploadicon.svg"
+    alt="preview"
+    style={{
+      width: '100%',
+      height: 400,
+      objectFit: 'contain',
+    }}
+  />
+)}
+
       <form style={{display: 'flex',  justifyContent: 'center', margin:'0.5rem',}} onSubmit={handleSubmit}>
 
         <TextField
