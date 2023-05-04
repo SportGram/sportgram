@@ -3,6 +3,7 @@ import React from 'react';
 import {useState} from 'react';
 import LoginForm from '../components/LoginForm';
 import RegisterForm from '../components/RegisterForm';
+import pageImg from '../assets/PhoneAD2.png'
 
 const Login = () => {
   const [formToggle, setFormToggle] = useState(true);
@@ -20,7 +21,7 @@ const Login = () => {
           <Grid container direction="column" alignItems="center">
             <Grid item>
               <img
-                src="./src/assets/PhoneAD2.png"
+                src={pageImg}
                 alt="Image 1"
                 style={{width: '100%', height: 'auto', maxWidth: '100%'}}
               />

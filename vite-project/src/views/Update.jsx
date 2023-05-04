@@ -70,7 +70,7 @@ const Update = () => {
 
 
 {file.media_type === 'image' && (
-      <img
+      <img require
         src={selectedImage}
         alt="preview"
         style={{

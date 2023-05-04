@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import {appId} from '../utils/variables';
 import {useMedia, useTag} from '../hooks/ApiHooks';
 import React from 'react';
+import img from '../assets/uploadicon.svg'
 
 
 const Upload = ({mediaTag, noRedirect, onUpload}) => {
@@ -87,7 +88,7 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
 {file ? (
   file.type.startsWith('image/') ? (
     <img
-      src={selectedImage || './src/assets/uploadicon.svg'}
+      src={selectedImage || img}
       alt="preview"
       style={{
         width: '100%',
@@ -103,7 +104,7 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
     />
   ) : (
     <video
-      src={selectedVideo || './src/assets/uploadicon.svg'}
+      src={selectedVideo || img}
       alt="preview"
       style={{
         width: '100%',
@@ -120,7 +121,7 @@ const Upload = ({mediaTag, noRedirect, onUpload}) => {
   )
 ) : (
   <img
-    src="./src/assets/uploadicon.svg"
+    src={img}
     alt="preview"
     style={{
       width: '100%',
