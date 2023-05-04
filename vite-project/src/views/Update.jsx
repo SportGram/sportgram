@@ -11,6 +11,7 @@ const Update = () => {
   const file = state.file;
 
   const selectedImage = mediaUrl + file.filename;
+  const selectedVideo = mediaUrl + file.filename;
 
   let allData = {
     desc: file.description,
@@ -66,6 +67,9 @@ const Update = () => {
 
   return (
     <Box>
+
+
+{file.media_type === 'image' && (
       <img
         src={selectedImage}
         alt="preview"
@@ -74,13 +78,35 @@ const Update = () => {
           height: 400,
           objectFit: 'contain',
           filter: `
-          brightness(${filterInputs.brightness}%)
-          contrast(${filterInputs.contrast}%)
-          saturate(${filterInputs.saturation}%)
-          sepia(${filterInputs.sepia}%)
+            brightness(${filterInputs.brightness}%)
+            contrast(${filterInputs.contrast}%)
+            saturate(${filterInputs.saturation}%)
+            sepia(${filterInputs.sepia}%)
           `,
         }}
       />
+    )}
+    {file.media_type === 'video' && (
+      <video
+        src={selectedVideo}
+        alt="preview"
+        style={{
+          width: '100%',
+          height: 400,
+          objectFit: 'contain',
+          filter: `
+            brightness(${filterInputs.brightness}%)
+            contrast(${filterInputs.contrast}%)
+            saturate(${filterInputs.saturation}%)
+            sepia(${filterInputs.sepia}%)
+          `,
+        }}
+      />
+    )}
+
+
+
+
       <form style={{display: 'flex',  justifyContent: 'center', margin:'0.5rem',}} onSubmit={handleSubmit}>
         <TextField
           onChange={handleInputChange}
